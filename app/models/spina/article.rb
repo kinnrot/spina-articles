@@ -3,7 +3,8 @@ module Spina
     attr_accessor :old_materialized_path
 
     belongs_to :photo
-    belongs_to :category
+    has_and_belongs_to_many :categories, join_table: 'spina_article_categories', foreign_key: :article_id
+
 
     validates :title, :body, :author, :publish_date, presence: true
     validates :slug, uniqueness: true
